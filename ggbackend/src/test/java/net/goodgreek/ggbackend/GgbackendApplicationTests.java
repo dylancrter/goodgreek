@@ -1,10 +1,10 @@
-package net.goodgreek.emsbackend;
+package net.goodgreek.ggbackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmsBackendApplicationTests {
+class GgbackendApplicationTests {
 
 	@Test
 	void contextLoads() {
