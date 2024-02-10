@@ -1,5 +1,4 @@
-import { Component } from "react";
-import TopBar from "../components/TopBar";
+import { useEffect } from "react";
 import EventSumm from "../components/EventSumm";
 import '../css/eventlist.css';
 import EventsService from "../services/EventsService";
