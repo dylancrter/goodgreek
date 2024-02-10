@@ -1,0 +1,6 @@
+.event {
+    width: 80vw;
+    height: 88vh;
+    border: .1em solid grey;
+    border-radius: 1em;
+}

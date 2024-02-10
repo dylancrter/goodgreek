@@ -1,0 +1,14 @@
+.event-summary {
+    width: 80vw;
+    height: 20vh;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    border: .1em solid grey;
+    padding-left: 5%;
+}
+
+.summary-text {
+    display: flex;
+    flex-direction: column;
+}

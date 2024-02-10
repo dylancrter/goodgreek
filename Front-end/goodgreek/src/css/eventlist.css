@@ -1,0 +1,7 @@
+.event-list {
+    width: 95vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

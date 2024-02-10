@@ -3,6 +3,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width: 100vw;
+    position: fixed !important; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    padding-left: 2vw !important;
+    padding-right: 2vw !important;
 }
 
 .dropdown-toggle::after {
@@ -23,4 +28,22 @@
     border-radius: 1px;
     background-color: black;
     margin: 6px 0;
+}
+
+.logo {
+    max-height: 4vh;
+}
+
+.brand {
+    display: flex;
+    flex-direction: row;
+}
+
+.goodgreek {
+    font-size: 1em;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: .1em;
+    margin-left: .2em;
 }
