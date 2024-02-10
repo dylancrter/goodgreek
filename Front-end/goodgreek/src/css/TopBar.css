@@ -2,4 +2,25 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+.dropdown::after {
+    content: none;
+}
+
+.hamburger::after {
+    content: none;
+}
+
+.hamburgerline {
+    width: 35px;
+    height: 4px;
+    border-radius: 1px;
+    background-color: black;
+    margin: 6px 0;
 }
