@@ -12,7 +12,7 @@ const events = [ {
   },
 ];
 
-export default function EventSumm(props) {
+const Event = () =>{
     const queryParameters = new URLSearchParams(window.location.search)
     const name = queryParameters.get("name");
     const org = queryParameters.get("org");
@@ -52,3 +52,5 @@ export default function EventSumm(props) {
       </div>
     )
 }
+
+export default Event
