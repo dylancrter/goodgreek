@@ -1,16 +1,10 @@
 package net.goodgreek.ggbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -21,7 +15,8 @@ import java.util.stream.Collectors;
 public class User {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
+    @SequenceGenerator(name = "user_seq", allocationSize = 1)
     private long id;
 
     @Column(name = "name")
