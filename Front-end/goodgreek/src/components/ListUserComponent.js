@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import UserService from '../services/UserService'
 
 export default function ListUserComponent() => {
   
     const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        
+        UserService.getAllUsers().then((response) => {
+            setUsers(response.data)
+            console.log(response.data)
+        }).catch((error) => {
+            console.log(error);
+        })
+    }, []}
 
     return (
         <div className = "container">
