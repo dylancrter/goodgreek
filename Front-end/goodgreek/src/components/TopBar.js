@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/TopBar.css";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Logo from '../assets/favicon.png';
+import "../css/TopBar.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,8 +17,10 @@ export default function TopBar() {
         <Nav className="menu">
           <Nav.Link href="/" style={{ color: 'white' }}>Home</Nav.Link>
           {true &&
-          <p><Nav.Link href="signup" style={{ color: 'white' }}>Sign Up</Nav.Link>
-          <Nav.Link href="signin" style={{ color: 'white' }}>Sign In</Nav.Link></p>
+          <NavDropdown title="Menu" id="basic-nav-dropdown" alignRight>
+            <NavDropdown.Item href="signup">Sign Up</NavDropdown.Item>
+            <NavDropdown.Item href="signin">Sign In</NavDropdown.Item>
+          </NavDropdown>
           }
         </Nav>
       </Navbar.Collapse>
