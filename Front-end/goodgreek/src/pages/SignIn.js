@@ -16,12 +16,17 @@ export const SignIn = () => {
         password,
       }).then((value) => {
         console.log(value);
-        sessionStorage.isLoggedIn = true;
         // Expected output: "Success!"
       }).catch((error) => {
+        alert("There was an error loggin in");
+      });
+
+      if (response.ok) {
+        sessionStorage.isLoggedIn = true;
+      } else {
         alert("Incorrect Username or Password.");
         sessionStorage.isLoggedIn = false;
-      });
+      }
 
       console.log(response.data);
 
