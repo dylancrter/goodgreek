@@ -1,34 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import EventSumm from "../components/EventSumm";
 import '../css/eventlist.css';
 import EventsService from "../services/EventsService";
 
-const eventinfo = [ {
-  name: 'No Events Found', datetime: 'Never', organizer: "No One"
-}];
+const EventList = () => {
+  const [events, setEvents] = useState([]);
 
-const eventslist = () => {
-  EventsService.getAllEvents().then((response) => {
-    var events = Object.keys(response.data);
-    console.log(response.data);
-    events.map(function(data) {
-    return (
-      <div>
-        <EventSumm name={data.name} datetime={data.datetime} organizer={data.organizer}/>
-      </div>
-    )
-  })
-})};
+  useEffect(() => {
+    EventsService.getAllEvents().then((response) => {
+      setEvents(response.data);
+    });
+  }, []);
 
-const EventList = () =>{
-  
   return (
-      <div className="event-list">
-        <title>Good Greek</title>
-        <h1>Events</h1>
-        {eventslist}
-      </div>
-    );
-  }
+    <div className="event-list">
+      <title>Good Greek</title>
+      <h1>Events</h1>
+      {events.map((event, index) => (
+        <EventSumm key={index} name={event.name} datetime={event.datetime} organizer={event.organizer}/>
+      ))}
+      {events.length === 0 && (
+        <EventSumm name="No Events Found" datetime="Never" organizer="No One"/>
+      )}
+    </div>
+  );
+};
 
-  export default EventList;
+export default EventList;
