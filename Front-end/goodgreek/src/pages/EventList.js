@@ -31,7 +31,7 @@ const EventList = () => {
       <h1>Philanthropic Events</h1>
       {events.map((event, index) => (
         <Link to={"/event?id=" + event.id} style={{ textDecoration: 'none', color: "inherit" }}>
-          <EventSumm image={event.image} key={index} name={event.eventName} datetime={event.date} location={event.location} organizer={event.organization}/>
+          <EventSumm image={event.id % 4} key={index} name={event.eventName} datetime={event.date} location={event.location} organizer={event.organization}/>
         </Link>
       ))}
       {events.length === 0 && (
