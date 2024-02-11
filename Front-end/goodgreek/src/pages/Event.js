@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import "../css/App.css";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import '../css/event.css';
@@ -8,113 +8,48 @@ import EventsService from "../services/EventsService";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-var name;
-var org;
-var date;
-var location;
-var description;
-var price;
-var venmo ;
-var benefits;
-var charityweb;
+const Event = () => {
+  const [eventData, setEventData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-const events = [ {
-    name: 'Feed the Hungry', datetime: 'Tomorrow', organizer: "Alpha Sig"
-  },
-];
+  const id = new URLSearchParams(window.location.search).get("id");
 
-const test = () => {
+  useEffect(() => {
+    try {
+      EventsService.getEventById(id).then((response) => {
+        setEventData(response.data);
+        setLoading(false);
+      });
+    }
+    catch(err) {
+      setLoading(false);
+    }
+    
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!eventData) {
+    return <div>No event found</div>;
+  }
+
+  const { eventName, organization, date, location, eventDescription, price, venmo, benefits, website } = eventData;
+
   return (
-    <div>
-      <h1>Name: {name}</h1>
-      <p>Organizer: {org}</p>
+    <div className="event">
+      <h1>Name: {eventName}</h1>
+      <p>Organizer: {organization}</p>
       <p>Date: {date}</p>
       <p>Location: {location}</p>
-
-      {price != null &&
-        <p>Price: {price}</p>
-      }
-      
-      {venmo != null &&
-        <p>Venmo: {venmo}</p>
-      }
-
-      {benefits != null &&
-        <p>Benefits: {benefits}</p>
-      }
-
-      {charityweb != null &&
-        <p>Charity Website: {charityweb}</p>
-      } 
-
-      <p>Description: {description}</p>
+      {price && <p>Price: {price}</p>}
+      {venmo && <p>Venmo: {venmo}</p>}
+      {benefits && <p>Benefits: {benefits}</p>}
+      {website && <p>Charity Website: {website}</p>}
+      <p>Description: {eventDescription}</p>
     </div>
-  )
-}
+  );
+};
 
-
-const Event = () =>{
-    var queryParameters = new URLSearchParams(window.location.search)
-
-    const eventdata = () => {
-      EventsService.getAllEvents().then((response) => {
-        eventdata = Object.keys(response.data);
-        console.log(response.data);
-        eventdata.map(function(data) {
-          name = data.name;
-          org = data.organization;
-          date = data.date
-          location = data.location
-          description = data.description
-          price = data.price
-          venmo = data.venmo
-          benefits = data.benefits
-          charityweb = data.website
-          return (
-            <div>
-              <h1>Name: {name}</h1>
-              <p>Organizer: {org}</p>
-              <p>Date: {date}</p>
-              <p>Location: {location}</p>
-
-              {price != null &&
-                <p>Price: {price}</p>
-              }
-              
-              {venmo != null &&
-                <p>Venmo: {venmo}</p>
-              }
-
-              {benefits != null &&
-                <p>Benefits: {benefits}</p>
-              }
-
-              {charityweb != null &&
-                <p>Charity Website: {charityweb}</p>
-              } 
-
-              <p>Description: {description}</p>
-            </div>
-          )
-      })
-    })};
-
-    const id = queryParameters.get("id");
-
-    useEffect(() => {
-
-      EventsService.getEventById(id).then((response) => {
-        events = Object.keys(response.data);
-        console.log(response.data);
-      })
-
-  }, []);
-
-    return (
-      <div className="event">
-        {Event}
-      </div>
-    )
-}
-
-export default Event
+export default Event;
