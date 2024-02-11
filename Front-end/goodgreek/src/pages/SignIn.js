@@ -11,7 +11,7 @@ export const SignIn = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('your_login_endpoint', {
+      const response = await axios.post('/login', {
         email,
         password
       });

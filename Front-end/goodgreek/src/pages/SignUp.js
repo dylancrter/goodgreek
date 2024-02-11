@@ -19,7 +19,7 @@ export const SignUp = () => {
         };
 
         try {
-          const response = await axios.post('your_login_endpoint', {
+          const response = await axios.post('/register', {
             email,
             password
           });
