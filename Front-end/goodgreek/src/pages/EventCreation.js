@@ -137,6 +137,18 @@ export const EventCreation = () => {
                               />
                           </div>
                           <div className="form-label mb-2 eventrow">
+                              <label className="form-label eventlabel"> Benefits:</label>
+                              <input
+                                  type="text"
+                                  placeholder="Benefits"
+                                  name="benefits"
+                                  className="form-control"
+                                  value={website}
+                                  onChange={e => setBenefits(e.target.value)}
+                                  onClick={e => e.target.select()}
+                              />
+                          </div>
+                          <div className="form-label mb-2 eventrow">
                               <label className="form-label eventlabel"> Description:</label>
                               <input
                                   type="text"
