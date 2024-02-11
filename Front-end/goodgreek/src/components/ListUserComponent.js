@@ -1,29 +1,40 @@
-import React, { useEffect } from 'react'
-import UserService from '../services/UserService'
 
-export default function ListUserComponent() => {
+import axios from 'axios';
+import React, { useEffect } from 'react';
+
+const API_URL = 'http://localhost:3001';
+
+export default function ListUserComponent() {
   
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        
-        UserService.getAllUsers().then((response) => {
-            setUsers(response.data)
-            console.log(response.data)
-        }).catch((error) => {
-            console.log(error);
-        })
-    }, []}
+        const getAllUsers = () => {
+            const API_URL = 'http://localhost:3001'; // Make sure to include the protocol (http:// or https://)
+            return axios.get(API_URL)
+                .then(response => {
+                    // handle response here
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        };
+
+        getAllUsers(); // Call the function
+    }, []); // Dependency array for useEffect
 
     return (
         <div className = "container">
             <h1 className = "text-center"> List Users </h1>
+            <Link to = "/add-user" className = "btn btn-primary mb-2" > Add User </Link>
             <table className = "tabke table-bordered table-striped">
             <thead>
                 <th> User Id </th>
-                <th> User First Name </th>
-                <th> User Last Name </th>
-                <th> User Email Id </th>
+                <th> User Name </th>
+                <th> User Email </th>
+                <th> User Password </th>
+                <th> User Organization </th>
                 </thead>
                 <tbody>
                     {
@@ -40,5 +51,5 @@ export default function ListUserComponent() => {
                 </tbody>
             </table>
         </div>
-  )
+    )
 }
