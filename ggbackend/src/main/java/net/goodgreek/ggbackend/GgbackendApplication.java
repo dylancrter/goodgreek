@@ -23,26 +23,6 @@ public class GgbackendApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		User user1 = new User();
-		user1.setOrganization("Alpha Sigma Phi");
-		user1.setEmail("ugaalphasig@gmail.com");
-		user1.setName("Nubayat Ahmed");
-		user1.setPassword("Nublikesballs");
-		userController.registerUser(user1);
-
-
-		Event event = new Event();
-		event.setOrganization("Alpha Sigma Phi");
-		event.setEventName("Boston Twea Party");
-		event.setEventDescription("Getting Hammered");
-		event.setLocation("Athens, GA");
-		event.setDate("Feb 11");
-		event.setPrice("$20");
-		event.setVenmo("@alphasig");
-		event.setBenefits("Donald Trump");
-		event.setWebsite("donaldtrump.com");
-		eventRepository.save(event);
-
 
 	}
 }
