@@ -3,22 +3,27 @@ import React, { useState } from 'react';
 
 import '../css/signin.css';
 
+// SignIn component for user authentication
 export const SignIn = () => {
+  // State hooks for email and password input fields
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission behavior
 
-    try {
+    try { // POST request to login endpoint with user credentials
       const response = await axios.post('http://localhost:3306/api/user/login', {
         email,
         password,
       }).then((value) => {
-        console.log(value);
+        // Handle successful request
+        console.log(value); // Logging the response value
         // Expected output: "Success!"
       }).catch((error) => {
-        alert("There was an error loggin in");
+        // Handle error in login request
+        alert("There was an error loggin in"); 
       });
 
       if (response.ok) {

@@ -19,6 +19,7 @@ const EventList = () => {
 
   }, []);
 
+  // Render the component
   return (
     <div className="event-list">
       {!sessionStorage.isLoggedIn && (
