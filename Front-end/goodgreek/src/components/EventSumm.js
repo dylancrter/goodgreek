@@ -14,13 +14,14 @@ const events = [ {
 export default function EventSumm(props) {
   return (
     <div className="event-summary">
-        <a></a>
-        <img src={sample} alt={props.name} style={{ width: '250px', height: '300px'}}/>
+      <img src={sample} alt={props.name} style={{ width: '30%', height: '80%'}}/>
         <div className="summary-text">
-            <h1>{props.name}</h1>
-            <h2>{props.datetime}</h2>
-            <h3>{props.organizer}</h3>
+            <h1 style={{marginBottom: '5%'}}>{props.name}</h1>
+            <h2 style={{marginBottom: '2.5%'}}>{props.datetime}</h2>
+            <h4 style={{marginBottom: '5%'}}>{props.location}</h4>
+            <h2>{props.organizer}</h2>
         </div>
     </div>
   );
 }
+

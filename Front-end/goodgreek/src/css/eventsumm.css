@@ -1,15 +1,22 @@
 .event-summary {
-    width: 80vw;
-    height: 20vh;
+    width: 60vw;
+    height: 50vh;
     border-radius: 1em;
     display: flex;
     flex-direction: row;
     border: .1em solid #3b352e;
     padding-left: 5%;
     background-color: #3b352e;
+    margin-top: 5vh;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10%;
 }
 
 .summary-text {
     display: flex;
     flex-direction: column;
+    margin-left: 10vw;
+    align-items: center;
+    justify-content: center;
 }

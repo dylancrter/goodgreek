@@ -16,15 +16,15 @@ const EventList = () => {
 
   return (
     <div className="event-list">
-      <title>Good Greek</title>
-      <h1>Events</h1>
+      <title>GoodGreek</title>
+      <h1>Philanthropic Events</h1>
       {events.map((event, index) => (
         <Link to={"/id/" + event.id}>
-          <EventSumm key={index} name={event.eventName} datetime={event.date} organizer={event.organization}/>
+          <EventSumm key={index} name={event.eventName} datetime={event.date} location={event.location} organizer={event.organization}/>
         </Link>
       ))}
       {events.length === 0 && (
-        <EventSumm name="Poopy" datetime="Febuary 7 @ 5:00pm" organizer="Alpha Sigma Phi"/>
+        <EventSumm name="Chipotle Fundraiser" datetime="January 31, 5-9pm" location="165 Alps Rd, Athens, GA 30606" organizer="Alpha Sigma Phi"/>
       )}
     </div>
   );
