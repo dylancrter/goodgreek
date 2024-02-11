@@ -4,6 +4,7 @@ import '../css/eventlist.css';
 import EventsService from "../services/EventsService";
 import {Link} from "react-router-dom";
 import { redirect } from "react-router-dom";
+import AddEventButton from '../components/AddEventButton';
 
 
 const EventList = () => {
@@ -21,7 +22,7 @@ const EventList = () => {
       {!sessionStorage.isLoggedIn && (
         <meta http-equiv="Refresh" content="0; url='/signin'" />
       )}
-      
+
       <title>GoodGreek</title>
       <h1>Philanthropic Events</h1>
       {events.map((event, index) => (
@@ -32,6 +33,7 @@ const EventList = () => {
       {events.length === 0 && (
         <EventSumm name="Chipotle Fundraiser" datetime="January 31, 5-9pm" location="165 Alps Rd, Athens, GA 30606" organizer="Alpha Sigma Phi"/>
       )}
+      <AddEventButton />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import EventList from "./pages/EventList";
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Event from './pages/Event'
-import AddEventButton from './components/AddEventButton';
+
 import { EventCreation } from "./pages/EventCreation";
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
-      <AddEventButton />
+      
     </div>
   );
 }
