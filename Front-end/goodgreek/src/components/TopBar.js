@@ -12,7 +12,7 @@ export default function TopBar() {
         <img src={Logo} className="logo"></img>
         <h1 className="goodgreek">Good Greek</h1>
       </Navbar.Brand>
-      <NavDropdown style={{ backgroundColor: '#ba0c2f' }} className="OrgDropdown" title="Greek Organizations" id="collasible-nav-dropdown">
+      <NavDropdown style={{ backgroundColor: '#ba0c2f'}} className="OrgDropdown" title="Greek Organizations" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#signup">Interfraternity Council</NavDropdown.Item>
             <NavDropdown.Item href="#signin">Multicultural Greek Council</NavDropdown.Item>
             <NavDropdown.Item href="#signin">National Pan-Hellenic Council</NavDropdown.Item>

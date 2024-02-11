@@ -3,13 +3,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     position: fixed !important; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
-    padding-left: 2vw !important;
-    padding-right: 2vw !important;
-    margin-left: -5px;
+    padding-left: 1vw !important;
+    padding-right: 1vw !important;
+    margin-left: 1px;
     color: white;
+    margin-right: 20px;
 }
 
 .dropdown-toggle::after {

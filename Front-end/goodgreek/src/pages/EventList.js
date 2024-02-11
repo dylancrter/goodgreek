@@ -20,7 +20,7 @@ const EventList = () => {
         <EventSumm key={index} name={event.eventName} datetime={event.date} organizer={event.organization}/>
       ))}
       {events.length === 0 && (
-        <EventSumm name="No Events Found" datetime="Never" organizer="No One"/>
+        <EventSumm name="Poopy" datetime="Febuary 7 @ 5:00pm" organizer="Alpha Sigma Phi"/>
       )}
     </div>
   );

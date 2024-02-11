@@ -4,8 +4,9 @@
     border-radius: 1em;
     display: flex;
     flex-direction: row;
-    border: .1em solid grey;
+    border: .1em solid #3b352e;
     padding-left: 5%;
+    background-color: #3b352e;
 }
 
 .summary-text {

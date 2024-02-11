@@ -15,7 +15,7 @@ export default function EventSumm(props) {
   return (
     <div className="event-summary">
         <a></a>
-        <img src={sample} alt={props.name}/>
+        <img src={sample} alt={props.name} style={{ width: '250px', height: '300px'}}/>
         <div className="summary-text">
             <h1>{props.name}</h1>
             <h2>{props.datetime}</h2>

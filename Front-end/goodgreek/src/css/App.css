@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #3d3c3a;
+  background-color: #23201b;
 }
 
 
@@ -28,7 +28,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #23201b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
