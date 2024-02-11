@@ -1,22 +1,20 @@
-import { useEffect, useState, Image } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import AddEventButton from '../components/AddEventButton';
 import EventSumm from "../components/EventSumm";
 import '../css/eventlist.css';
 import EventsService from "../services/EventsService";
-import {Link} from "react-router-dom";
-import { redirect } from "react-router-dom";
-import AddEventButton from '../components/AddEventButton';
 
-import image0 from '../assets/donation.png';
-import image1 from '../assets/unity.jpg';
-import image2 from '../assets/volunteer.jpeg';
-import image3 from '../assets/hearthands.jpg';
 
+// Component to render a list of events
 const EventList = () => {
+  // State hook to store the list of events
   const [events, setEvents] = useState([]);
 
+  // useEffect hook to fetch all events on component mount
   useEffect(() => {
     EventsService.getAllEvents().then((response) => {
-      setEvents(response.data);
+      setEvents(response.data); // Update the events state with the fetched data
     });
 
   }, []);
