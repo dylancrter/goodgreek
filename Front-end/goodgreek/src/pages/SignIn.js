@@ -11,9 +11,16 @@ export const SignIn = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('your_login_endpoint', {
+      const response = await axios.post('http://localhost:3306/api/user/login', {
         email,
-        password
+        password,
+      }).then((value) => {
+        console.log(value);
+        sessionStorage.isLoggedIn = true;
+        // Expected output: "Success!"
+      }).catch((error) => {
+        alert("Incorrect Username or Password.");
+        sessionStorage.isLoggedIn = false;
       });
 
       console.log(response.data);

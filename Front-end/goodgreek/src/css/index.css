@@ -10,6 +10,7 @@ body {
   overflow: hidden;
   position: relative;
   color: white;
+  background-color: #23201b;
 }
 
 code {
@@ -24,4 +25,5 @@ code {
   bottom: -19px;
   right: -17px; 
   height: 100vh;
+  background-color: #23201b;
 }

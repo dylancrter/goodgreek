@@ -60,6 +60,18 @@ public class UserController {
         return ResponseEntity.ok(savedUser);
     }
 
-    
+    // Mapping for creating a new user
+    @PostMapping("/login")
+    public ResponseEntity<?> logIn(@RequestBody User user) {
+        // Check if a user with the same email already exists
+        User existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser != null) {
+            User savedUser = userRepository.save(user);
+            return ResponseEntity.ok(savedUser);
+        }
+
+        // If no duplicate user is found, save the new user
+        return ResponseEntity.ok("Welcome");
+    }
 
 }
