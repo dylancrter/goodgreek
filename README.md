@@ -7,7 +7,10 @@
 - Dylan Carter
 
 ## Purpose
-Web App for UGA fraternities/sororities to post their philanthropy events.
+Web App for UGA fraternities/sororities to post their philanthropy events and explore others' philanthropy events.
+
+## Stack
+We used a Java Springboot framework for the backend with a MySQL database connected for data storage. For the frontend we used React and Bootstrap.
 
 ## How to Run the Application
 
