@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import EventSumm from "../components/EventSumm";
 import '../css/eventlist.css';
 import EventsService from "../services/EventsService";
+import {Link} from "react-router-dom";
+
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
@@ -17,7 +19,9 @@ const EventList = () => {
       <title>Good Greek</title>
       <h1>Events</h1>
       {events.map((event, index) => (
-        <EventSumm key={index} name={event.eventName} datetime={event.date} organizer={event.organization}/>
+        <Link to={"/id/" + event.id}>
+          <EventSumm key={index} name={event.eventName} datetime={event.date} organizer={event.organization}/>
+        </Link>
       ))}
       {events.length === 0 && (
         <EventSumm name="Poopy" datetime="Febuary 7 @ 5:00pm" organizer="Alpha Sigma Phi"/>
