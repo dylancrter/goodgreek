@@ -33,11 +33,11 @@ const Event = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="whitetext">Loading...</div>;
+    return <div className="text">Loading...</div>;
   }
 
   if (!eventData) {
-    return <div className="whitetext">No event found</div>;
+    return <div className="text">No event found</div>;
   }
 
   const { eventName, organization, date, location, eventDescription, price, venmo, benefits, website, image } = eventData;

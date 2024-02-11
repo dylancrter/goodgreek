@@ -10,11 +10,11 @@
 }
 
 .event * {
-    color: white;
+    color: #3b352e;
 }
 
-.whitetext {
-    color: white !important;
+.text {
+    color: #3b352e !important;
 }
 
 .event-info {
