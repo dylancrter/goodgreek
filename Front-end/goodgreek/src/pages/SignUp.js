@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../css/SignUp.css';
-
 export const SignUp = () => {
     
     const [name, setName] = useState('');
@@ -8,10 +7,15 @@ export const SignUp = () => {
     const [email, setEmail] = useState('');
     const [organization, setOrganization] = useState('');
     
-    const saveUser = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-        const user = { name, password, email, organization };
+        const user = {
+            name: name,
+            email: email,
+            password: password,
+            organization: organization
+        };
 
         try {
             const response = await fetch('/api/saveUser', {
@@ -39,7 +43,7 @@ export const SignUp = () => {
                     <div className="card col-md-6 offset-md-3 offset-3">
                         <h2 className="text-center"> Register </h2>
                         <div className="card-body">
-                            <form onSubmit={saveUser}>
+                            <form onSubmit={handleSubmit}>
                                 <div className="form-label mb-2"> 
                                     <label className="form-label"> Name :</label>
                                     <input
