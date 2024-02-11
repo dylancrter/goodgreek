@@ -13,19 +13,16 @@ const EventList = () => {
     EventsService.getAllEvents().then((response) => {
       setEvents(response.data);
     });
-  }, []);
 
-  const redirector = async () => {
-    if (!sessionStorage.isLoggedIn) {
-      return redirect("/login");
-    }
-    console.log(sessionStorage.isLoggedIn);
-    return null;
-  };
+  }, []);
 
   return (
     <div className="event-list">
+      {!sessionStorage.isLoggedIn && (
+        <meta http-equiv="Refresh" content="0; url='/signin'" />
+      )}
       
+
       <title>Good Greek</title>
       <h1>Events</h1>
       {events.map((event, index) => (

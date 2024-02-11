@@ -38,6 +38,9 @@ export const SignIn = () => {
 
   return (
     <div className="signin-card">
+      {sessionStorage.isLoggedIn && (
+      <meta http-equiv="Refresh" content="0; url='/'" />
+      )}
       <h2 className="text-center">Sign In</h2>
       <div className="card-body">
         <form onSubmit={handleSubmit}>
