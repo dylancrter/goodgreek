@@ -19,7 +19,7 @@ export const EventCreation = () => {
 
 
         try {
-          const response = await axios.post('http://localhost:3306/api/events/', {
+          const response = await axios.post('http://localhost:3306/api/event/events', {
             benefits,
             date,
             eventDescription,
