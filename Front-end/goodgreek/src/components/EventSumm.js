@@ -19,10 +19,10 @@ const events = [ {
 export default function EventSumm(props) {
   return (
     <div className="event-summary">
-        {image == 0 && <img className="event-image" src={image0} style={{ width: '30%', height: '80%'}}/>}
-        {image == 1 && <img className="event-image" src={image1} style={{ width: '30%', height: '80%'}}/>}
-        {image == 2 && <img className="event-image" src={image2} style={{ width: '30%', height: '80%'}}/>}
-        {image == 3 && <img className="event-image" src={image3} style={{ width: '30%', height: '80%'}}/>}
+        {props.image == 0 && <img className="event-image" src={image0} style={{ width: '30%', height: '80%'}}/>}
+        {props.image == 1 && <img className="event-image" src={image1} style={{ width: '30%', height: '80%'}}/>}
+        {props.image == 2 && <img className="event-image" src={image2} style={{ width: '30%', height: '80%'}}/>}
+        {props.image == 3 && <img className="event-image" src={image3} style={{ width: '30%', height: '80%'}}/>}
         <div className="summary-text">
             <h1 style={{marginBottom: '5%'}}>{props.name}</h1>
             <h2 style={{marginBottom: '2.5%'}}>{props.datetime}</h2>
