@@ -37,74 +37,68 @@ export const SignUp = () => {
     };
 
     return (
-        <div>
-            <div className="container">
-                <div className="row">
-                    <div className="paper col-md-6 offset-md-3 offset-3">
-                        <h2 className="text-center"> Register </h2>
-                        <div className="paper-body">
-                            <form onSubmit={handleSubmit}>
-                                <div className="form-label mb-2">
-                                    <label className="form-label"> Name :</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Full Name"
-                                        name="name"
-                                        className="form-control"
-                                        value={name}
-                                        onChange={e => {
-                                            setName(e.target.value);
-                                            console.log(e.target.value);
-                                        }}
-                                    />
-                                </div>
+              <div className="paper col-md-6 offset-md-3 offset-3">
+                  <h2 className="text-center"> Register </h2>
+                  <div className="paper-body">
+                      <form onSubmit={handleSubmit}>
+                          <div className="form-label mb-2">
+                              <label className="form-label"> Name :</label>
+                              <input
+                                  type="text"
+                                  placeholder="Full Name"
+                                  name="name"
+                                  className="form-control"
+                                  value={name}
+                                  onChange={e => {
+                                      setName(e.target.value);
+                                      console.log(e.target.value);
+                                  }}
+                              />
+                          </div>
 
-                                <div className="form-label mb-2">
-                                    <label className="form-label"> Email :</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Email"
-                                        name="email"
-                                        className="form-control"
-                                        value={email}
-                                        onChange={e => setEmail(e.target.value)}
-                                        onClick={e => e.target.select()}
-                                    />
-                                </div>
+                          <div className="form-label mb-2">
+                              <label className="form-label"> Email :</label>
+                              <input
+                                  type="text"
+                                  placeholder="Email"
+                                  name="email"
+                                  className="form-control"
+                                  value={email}
+                                  onChange={e => setEmail(e.target.value)}
+                                  onClick={e => e.target.select()}
+                              />
+                          </div>
 
-                                <div className="form-label mb-2">
-                                    <label className="form-label"> Password :</label>
-                                    <input
-                                        type="password"
-                                        placeholder="Password"
-                                        name="password"
-                                        className="form-control"
-                                        value={password}
-                                        onChange={e => setPassword(e.target.value)}
-                                        onClick={e => e.target.select()}
-                                    />
-                                </div>
+                          <div className="form-label mb-2">
+                              <label className="form-label"> Password :</label>
+                              <input
+                                  type="password"
+                                  placeholder="Password"
+                                  name="password"
+                                  className="form-control"
+                                  value={password}
+                                  onChange={e => setPassword(e.target.value)}
+                                  onClick={e => e.target.select()}
+                              />
+                          </div>
 
-                                <div className="form-label mb-2">
-                                    <label className="form-label"> Organization :</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Organization"
-                                        name="organization"
-                                        className="form-control"
-                                        value={organization}
-                                        onChange={e => setOrganization(e.target.value)}
-                                        onClick={e => e.target.select()}
-                                    />
-                                </div>
+                          <div className="form-label mb-2">
+                              <label className="form-label"> Organization :</label>
+                              <input
+                                  type="text"
+                                  placeholder="Organization"
+                                  name="organization"
+                                  className="form-control"
+                                  value={organization}
+                                  onChange={e => setOrganization(e.target.value)}
+                                  onClick={e => e.target.select()}
+                              />
+                          </div>
 
-                                <button type="submit" className="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                          <button type="submit" className="btn btn-primary">Submit</button>
+                      </form>
+                  </div>
+              </div>
     );
 };
 
