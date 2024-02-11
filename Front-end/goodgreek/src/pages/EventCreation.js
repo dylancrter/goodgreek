@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../css/EventCreation.css';
 
 export const EventCreation = () => {
+    // State hooks to store form inputs
     const [benefits, setBenefits] = useState('');
     const [date, setDate] = useState('');
     const [eventDescription, setEventDescription] = useState('');
@@ -14,12 +15,14 @@ export const EventCreation = () => {
     const [venmo, setVenmo] = useState('');
     const [website, setWebsite] = useState('');
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // Hook to navigate between routes
 
+    // Function to handle form submission
     const handleSubmit = async (event) => {
-        event.preventDefault();
+        event.preventDefault(); // Prevents the default form submit action
 
         try {
+            // Making a POST request to create a new event
             const response = await axios.post('http://localhost:3306/api/event/events', {
                 benefits,
                 date,
@@ -32,6 +35,7 @@ export const EventCreation = () => {
                 website
             });
 
+            // Handling response
             if (response.status === 200) {
                 console.log('Event created successfully');
                 // Optionally, navigate to another page or show a success message
@@ -43,10 +47,12 @@ export const EventCreation = () => {
         }
     };
 
+    // Function to navigate back to the home page
     const handleExit = () => {
-        navigate("/"); 
+        navigate("/"); // Using the navigate hook to redirect to the home page
     };
 
+    // JSX for rendering the event creation form
     return (
         <div className="event-creation-card">
             <button style={{marginLeft:'93%'}}type="button" className="btn btn-secondary mt-2" onClick={handleExit}>Exit</button>
