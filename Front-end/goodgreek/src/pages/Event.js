@@ -44,10 +44,10 @@ const Event = () => {
 
   return (
     <div className="event">
-      {image == 0 && <img src={image0}/>}
-      {image == 1 && <img src={image1}/>}
-      {image == 2 && <img src={image2}/>}
-      {image == 3 && <img src={image3}/>}
+      {image == 0 && <img className="event-image" src={image0}/>}
+      {image == 1 && <img className="event-image" src={image1}/>}
+      {image == 2 && <img className="event-image" src={image2}/>}
+      {image == 3 && <img className="event-image" src={image3}/>}
       <div className="event-info">
         <h1>Name: {eventName}</h1>
         <p>Organizer: {organization}</p>

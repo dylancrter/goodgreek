@@ -3,10 +3,10 @@
     height: 88vh;
     border: .1em solid grey;
     border-radius: 1em;
-    color: white;
+    color: #3b352e;
     display: flex;
     flex-direction: row;
-    
+    background-color: white;
 }
 
 .event * {
@@ -20,5 +20,10 @@
 .event-info {
     display: flex;
     flex-direction: column;
+    align-items: first baseline;
+    justify-content: center;
+}
 
+.event-image {
+    max-width: 40vw;
 }
