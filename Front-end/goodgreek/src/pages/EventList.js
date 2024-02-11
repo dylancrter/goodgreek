@@ -18,7 +18,7 @@ const EventList = () => {
   }, []);
 
   return (
-    <div className="event-list">
+    <div className="event-list" style={{textDecoration: none}}>
       {!sessionStorage.isLoggedIn && (
         <meta http-equiv="Refresh" content="0; url='/signin'" />
       )}
