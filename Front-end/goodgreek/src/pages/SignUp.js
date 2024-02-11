@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../css/SignUp.css';
+import axios from 'axios';
 
 export const SignUp = () => {
     const [name, setName] = useState('');
@@ -18,13 +19,10 @@ export const SignUp = () => {
         };
 
         try {
-            const response = await fetch('/api/saveUser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(user)
-            });
+          const response = await axios.post('your_login_endpoint', {
+            email,
+            password
+          });
 
             if (response.ok) {
                 console.log('User saved successfully');
