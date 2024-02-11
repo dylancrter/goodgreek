@@ -16,11 +16,11 @@ export const SignIn = () => {
         password,
       }).then((value) => {
         console.log(value);
-        sessionStorage.isLoggedIn = true;
+        setIsLoggedIn(true);
         // Expected output: "Success!"
       }).catch((error) => {
         alert("Incorrect Username or Password.");
-        sessionStorage.isLoggedIn = false;
+        setIsLoggedIn(false);
       });
 
       console.log(response.data);
@@ -38,6 +38,9 @@ export const SignIn = () => {
 
   return (
     <div className="signin-card">
+      {sessionStorage.isLoggedIn && (
+      <meta http-equiv="Refresh" content="0; url='/'" />
+      )}
       <h2 className="text-center">Sign In</h2>
       <div className="card-body">
         <form onSubmit={handleSubmit}>

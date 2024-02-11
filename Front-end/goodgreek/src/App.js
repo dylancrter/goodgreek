@@ -5,6 +5,8 @@ import EventList from "./pages/EventList";
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Event from './pages/Event'
+import AddEventButton from './components/AddEventButton';
+import { EventCreation } from "./pages/EventCreation";
 
 export default function App() {
   return (
@@ -16,6 +18,7 @@ export default function App() {
           <Route path="signin" element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="event" element={<Event/>} />
+          <Route path="new-event" element={<EventCreation/>} />
 
           {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
@@ -23,6 +26,7 @@ export default function App() {
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
+      <AddEventButton />
     </div>
   );
 }

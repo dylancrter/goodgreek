@@ -66,12 +66,11 @@ public class UserController {
         // Check if a user with the same email already exists
         User existingUser = userRepository.findByEmail(user.getEmail());
         if (existingUser != null) {
-            User savedUser = userRepository.save(user);
-            return ResponseEntity.ok(savedUser);
+            return ResponseEntity.ok("User");
         }
 
         // If no duplicate user is found, save the new user
-        return ResponseEntity.ok("Welcome");
+        return ResponseEntity.badRequest().body("Not User");
     }
 
 }
