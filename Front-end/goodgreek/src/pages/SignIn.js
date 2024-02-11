@@ -16,11 +16,11 @@ export const SignIn = () => {
         password,
       }).then((value) => {
         console.log(value);
-        sessionStorage.isLoggedIn = true;
+        setIsLoggedIn(true);
         // Expected output: "Success!"
       }).catch((error) => {
         alert("Incorrect Username or Password.");
-        sessionStorage.isLoggedIn = false;
+        setIsLoggedIn(false);
       });
 
       console.log(response.data);
