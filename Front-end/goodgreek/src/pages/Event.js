@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Image } from "react";
 import "../css/App.css";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import '../css/event.css';
@@ -6,18 +6,16 @@ import sample from '../assets/sampleposter.jpg';
 import axios from 'axios';
 import EventsService from "../services/EventsService";
 
-import donation from '../assets/donation.png';
-import unity from '../assets/unity.jpg';
-import volunteer from '../assets/volunteer.jpeg';
-import hearthands from '../assets/hearthands.jpg';
+import image0 from '../assets/donation.png';
+import image1 from '../assets/unity.jpg';
+import image2 from '../assets/volunteer.jpeg';
+import image3 from '../assets/hearthands.jpg';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Event = () => {
   const [eventData, setEventData] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const images = {donation, unity, volunteer, hearthands};
 
   const id = new URLSearchParams(window.location.search).get("id");
 
@@ -46,7 +44,10 @@ const Event = () => {
 
   return (
     <div className="event">
-      <img src={images[image]}></img>
+      {image == 0 && <img src={image0}/>}
+      {image == 1 && <img src={image1}/>}
+      {image == 2 && <img src={image2}/>}
+      {image == 3 && <img src={image3}/>}
       <div className="event-info">
         <h1>Name: {eventName}</h1>
         <p>Organizer: {organization}</p>

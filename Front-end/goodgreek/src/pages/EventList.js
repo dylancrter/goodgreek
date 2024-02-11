@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Image } from "react";
 import EventSumm from "../components/EventSumm";
 import '../css/eventlist.css';
 import EventsService from "../services/EventsService";
@@ -6,6 +6,10 @@ import {Link} from "react-router-dom";
 import { redirect } from "react-router-dom";
 import AddEventButton from '../components/AddEventButton';
 
+import image0 from '../assets/donation.png';
+import image1 from '../assets/unity.jpg';
+import image2 from '../assets/volunteer.jpeg';
+import image3 from '../assets/hearthands.jpg';
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
