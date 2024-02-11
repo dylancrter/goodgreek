@@ -10,15 +10,20 @@
     padding-right: 1vw !important;
     margin-left: 1px;
     color: white;
-    margin-right: 20px;
+    margin-right: 5px;
 }
 
+.dropdown{
+    color: white;
+}
 .dropdown-toggle::after {
     content: none;
 }
 
 .dropdown::after {
     content: none;
+    max-width: 25%;
+
 }
 
 .logo {
@@ -38,12 +43,11 @@
     margin-top: .1em;
     margin-left: .2em;
     color: white;
+    align-items: center;
+    justify-content: center;
 }
 
-.OrgDropdown {
+p {
     color: white;
-}
-
-Nav-Link {
-    color: white;
+    vertical-align: right;
 }

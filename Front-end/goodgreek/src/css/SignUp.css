@@ -5,4 +5,7 @@
     width: 300px;
     margin: 0 auto;
     background-color: white; 
+    align-items: center;
+    justify-content: center;
+    margin-top: 25%;
 }
