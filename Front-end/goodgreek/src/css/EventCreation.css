@@ -1,0 +1,19 @@
+.event-creation-card {
+    width: 75vw;
+    background-color: white;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.eventrow {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.eventlabel {
+    margin: 0;
+    margin-right: 1em;;
+    width: auto;
+}

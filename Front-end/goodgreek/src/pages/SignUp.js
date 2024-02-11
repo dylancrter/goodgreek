@@ -40,7 +40,7 @@ export const SignUp = () => {
 
     return (
               <div className="paper col-md-6 offset-md-3 offset-3">
-                  <h2 className="text-center"> Register </h2>
+                  <h2 className="text-center"> Register Account</h2>
                   <div className="paper-body">
                       <form onSubmit={handleSubmit}>
                           <div className="form-label mb-2">
@@ -97,7 +97,7 @@ export const SignUp = () => {
                               />
                           </div>
 
-                          <button type="submit" className="btn btn-primary">Submit</button>
+                          <button type="submit" className="btn btn-primary" style={{marginTop:'5%'}}>Submit</button>
                       </form>
                   </div>
               </div>

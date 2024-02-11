@@ -12,12 +12,18 @@ export default function TopBar() {
         <img src={Logo} className="logo"></img>
         <h1 className="goodgreek">GoodGreek</h1>
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+      <div style={{justifyContent:'center', marginLeft:'65%'}}>
+      <label style={{marginRight:'0.5vw'}}>Search:</label>
+      <input type="text" onChange={e => setQuery(e.target.value)} />
+      </div>
+      <div className="ml-auto">
+        <Navbar.Toggle style={{color:"white", borderWidth:"0.25vw"}} aria-controls="responsive-navbar-nav" />
+      </div>
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="menu">
+        <Nav style={{marginLeft:'95.5%'}} className="menu">
           <Nav.Link href="/" style={{ color: 'white' }}>Home</Nav.Link>
           {true &&
-          <p><Nav.Link href="signup" style={{ color: 'white' }}>Sign Up</Nav.Link>
+          <p><Nav.Link href="signup" style={{ color: 'white', verticalAlign:'right' }}>Sign Up</Nav.Link>
           <Nav.Link href="signin" style={{ color: 'white' }}>Sign In</Nav.Link></p>
           }
         </Nav>

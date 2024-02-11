@@ -1,0 +1,22 @@
+.add-button {
+    border-radius: 50%;
+    background-color: white;
+    color: #BA0C2F;
+    height: 3em;
+    width: 3em;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.event-adder {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+.add-plus {
+    text-align: center;
+}
