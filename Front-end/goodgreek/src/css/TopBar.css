@@ -8,6 +8,8 @@
     top: 0; /* Position the navbar at the top of the page */
     padding-left: 2vw !important;
     padding-right: 2vw !important;
+    margin-left: -5px;
+    color: white;
 }
 
 .dropdown-toggle::after {
@@ -16,18 +18,6 @@
 
 .dropdown::after {
     content: none;
-}
-
-.hamburger::after {
-    content: none;
-}
-
-.hamburgerline {
-    width: 35px;
-    height: 4px;
-    border-radius: 1px;
-    background-color: black;
-    margin: 6px 0;
 }
 
 .logo {
@@ -46,4 +36,13 @@
     vertical-align: middle;
     margin-top: .1em;
     margin-left: .2em;
+    color: white;
+}
+
+.OrgDropdown {
+    color: white;
+}
+
+Nav-Link {
+    color: white;
 }

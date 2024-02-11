@@ -9,6 +9,7 @@ body {
   height: 100%;
   overflow: hidden;
   position: relative;
+  color: white;
 }
 
 code {
@@ -22,6 +23,5 @@ code {
   left: 0;
   bottom: -19px;
   right: -17px; 
-  overflow: scroll;
   height: 100vh;
 }
