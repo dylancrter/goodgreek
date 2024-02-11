@@ -11,7 +11,7 @@ export const SignIn = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3306/login', {
+      const response = await axios.post('http://localhost:3306/api/user/login', {
         email,
         password
       });
