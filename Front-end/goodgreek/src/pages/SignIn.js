@@ -20,7 +20,7 @@ export const SignIn = () => {
         // Expected output: "Success!"
       }).catch((error) => {
         alert("Incorrect Username or Password.");
-        sessionStorage.isLoggedIn = false;
+        sessionStorage.isLoggedIn = false; //Change back to false
       });
 
       console.log(response.data);

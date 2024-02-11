@@ -49,8 +49,8 @@ export const EventCreation = () => {
 
     return (
         <div className="event-creation-card">
+            <button style={{marginLeft:'93%'}}type="button" className="btn btn-secondary mt-2" onClick={handleExit}>Exit</button>
             <h2 className="text-center">Create An Event!</h2>
-            <button type="button" className="btn btn-secondary mt-2" onClick={handleExit}>Exit</button>
             <div className="paper-body">
                 <form onSubmit={handleSubmit}>
                     <div className="form-label mb-2 eventrow">
