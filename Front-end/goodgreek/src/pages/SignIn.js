@@ -21,17 +21,12 @@ export const SignIn = () => {
         // Handle successful request
         console.log(value); // Logging the response value
         // Expected output: "Success!"
+        sessionStorage.isLoggedIn = true;
       }).catch((error) => {
         // Handle error in login request
-        alert("There was an error loggin in"); 
-      });
-
-      if (response.ok) {
-        sessionStorage.isLoggedIn = true;
-      } else {
         alert("Incorrect Username or Password.");
-        sessionStorage.isLoggedIn = false;
-      }
+        sessionStorage.isLoggedIn = false; 
+      });
 
       console.log(response.data);
 
