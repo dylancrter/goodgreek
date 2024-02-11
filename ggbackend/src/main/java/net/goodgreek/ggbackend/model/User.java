@@ -30,6 +30,4 @@ public class User {
     @Column(name = "organization")
     private String organization;
 
-    @Column(name = "admin")
-    private boolean admin;
 }
