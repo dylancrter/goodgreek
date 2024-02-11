@@ -13,7 +13,8 @@ export const SignIn = () => {
     try {
       const response = await axios.post('http://localhost:3306/api/user/login', {
         email,
-        password
+        password,
+        
       });
 
       console.log(response.data);

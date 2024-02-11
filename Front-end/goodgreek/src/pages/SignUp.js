@@ -21,7 +21,9 @@ export const SignUp = () => {
         try {
           const response = await axios.post('http://localhost:3306/api/user/register', {
             email,
-            password
+            password,
+            name,
+            organization
           });
 
             if (response.ok) {
