@@ -17,7 +17,7 @@ const EventList = () => {
       <title>Good Greek</title>
       <h1>Events</h1>
       {events.map((event, index) => (
-        <EventSumm key={index} name={event.name} datetime={event.datetime} organizer={event.organizer}/>
+        <EventSumm key={index} name={event.eventName} datetime={event.date} organizer={event.organization}/>
       ))}
       {events.length === 0 && (
         <EventSumm name="No Events Found" datetime="Never" organizer="No One"/>
