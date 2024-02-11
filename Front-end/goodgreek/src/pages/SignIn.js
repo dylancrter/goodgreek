@@ -1,15 +1,14 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios
 
 import '../css/signin.css';
 
 export const SignIn = () => {
-  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
     try {
       const response = await axios.post('your_login_endpoint', {
@@ -17,13 +16,16 @@ export const SignIn = () => {
         password
       });
 
-      console.log(response.data); // Handle successful login response
+      console.log(response.data);
 
-      // Reset form fields after successful login
+      // Set cookies
+      document.cookie = `email=${email}`;
+      document.cookie = `password=${password}`;
+
       setEmail('');
       setPassword('');
     } catch (error) {
-      console.error('Login failed:', error); // Handle login error
+      console.error('Login failed:', error);
     }
   };
 
@@ -31,7 +33,7 @@ export const SignIn = () => {
     <div className="signin-card">
       <h2 className="text-center">Sign In</h2>
       <div className="card-body">
-        <form onSubmit={handleSubmit}> {/* Attach handleSubmit function to onSubmit event */}
+        <form onSubmit={handleSubmit}>
           <div className="form-label mb-2"> 
             <label className="form-label">Email:</label>
             <input
@@ -54,7 +56,7 @@ export const SignIn = () => {
               onChange={e => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button> {/* Submit button */}
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>

@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import '../css/SignUp.css';
 
 export const SignUp = () => {
-    
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [organization, setOrganization] = useState('');
-    
-    const saveUser = async (e) => {
-        e.preventDefault();
 
-        const user = { name, password, email, organization };
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const user = {
+            name: name,
+            email: email,
+            password: password,
+            organization: organization
+        };
 
         try {
             const response = await fetch('/api/saveUser', {
@@ -24,6 +28,8 @@ export const SignUp = () => {
 
             if (response.ok) {
                 console.log('User saved successfully');
+                // Set cookie after successful user save
+                document.cookie = `user=${name}; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/`;
             } else {
                 console.log('Failed to save user');
             }
@@ -33,14 +39,14 @@ export const SignUp = () => {
     };
 
     return (
-        <div> 
+        <div>
             <div className="container">
                 <div className="row">
                     <div className="card col-md-6 offset-md-3 offset-3">
                         <h2 className="text-center"> Register </h2>
                         <div className="card-body">
-                            <form onSubmit={saveUser}>
-                                <div className="form-label mb-2"> 
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-label mb-2">
                                     <label className="form-label"> Name :</label>
                                     <input
                                         type="text"
@@ -51,11 +57,11 @@ export const SignUp = () => {
                                         onChange={e => {
                                             setName(e.target.value);
                                             console.log(e.target.value);
-                                            }}
+                                        }}
                                     />
                                 </div>
-                                            
-                                <div className="form-label mb-2"> 
+
+                                <div className="form-label mb-2">
                                     <label className="form-label"> Email :</label>
                                     <input
                                         type="text"
@@ -68,7 +74,7 @@ export const SignUp = () => {
                                     />
                                 </div>
 
-                                <div className="form-label mb-2"> 
+                                <div className="form-label mb-2">
                                     <label className="form-label"> Password :</label>
                                     <input
                                         type="password"
@@ -93,7 +99,7 @@ export const SignUp = () => {
                                         onClick={e => e.target.select()}
                                     />
                                 </div>
-                                                    
+
                                 <button type="submit" className="btn btn-primary">Submit</button>
                             </form>
                         </div>
