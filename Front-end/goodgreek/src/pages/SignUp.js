@@ -1,6 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import '../css/SignUp.css';
-import axios from 'axios';
 
 export const SignUp = () => {
     const [name, setName] = useState('');
@@ -40,9 +40,9 @@ export const SignUp = () => {
         <div>
             <div className="container">
                 <div className="row">
-                    <div className="card col-md-6 offset-md-3 offset-3">
+                    <div className="paper col-md-6 offset-md-3 offset-3">
                         <h2 className="text-center"> Register </h2>
-                        <div className="card-body">
+                        <div className="paper-body">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-label mb-2">
                                     <label className="form-label"> Name :</label>
