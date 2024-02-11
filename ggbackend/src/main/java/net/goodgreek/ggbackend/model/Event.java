@@ -1,16 +1,10 @@
 package net.goodgreek.ggbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -19,8 +13,9 @@ import java.util.stream.Collectors;
 @Entity
 @Table(name = "event")
 public class Event {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "organization")
@@ -28,6 +23,15 @@ public class Event {
 
     @Column(name = "eventName") 
     private String eventName;
+
+    @Column(name = "eventDescription")
+    private String eventDescription;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "date")
+    private String date;
 
     @Column(name = "price") 
     private String price;

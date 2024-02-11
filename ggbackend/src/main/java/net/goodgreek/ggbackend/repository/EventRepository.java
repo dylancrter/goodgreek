@@ -1,10 +1,10 @@
 package net.goodgreek.ggbackend.repository;
 
-import net.goodgreek.ggbackend.model.User;
+import net.goodgreek.ggbackend.model.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findByEmail(String email);
+public interface EventRepository extends JpaRepository<Event, Long> {
+    // all crud database methods
 }
