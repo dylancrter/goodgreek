@@ -8,11 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")
@@ -28,15 +31,34 @@ public class UserController {
 
     //Mapping for getting by id
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserbyId(@PathVariable Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Movie not found with id: " + id));
-        return ResponseEntity.ok(user);
-    }
+    public ResponseEntity<?> getUserById(@PathVariable Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build(); // Return 404 Not Found response
+        }
+}
 
     @DeleteMapping("/all")
-    public void deleteAllShowings() {
+    public void deleteAllUsers() {
         userRepository.deleteAll();
         return;
     }
+
+    // Mapping for creating a new user
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody User user) {
+        // Check if a user with the same email already exists
+        User existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser != null) {
+            return ResponseEntity.badRequest().body("A user with the same email already exists");
+        }
+
+        // If no duplicate user is found, save the new user
+        User savedUser = userRepository.save(user);
+        return ResponseEntity.ok(savedUser);
+    }
+
 }

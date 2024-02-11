@@ -1,56 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/App.css";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import '../css/event.css';
 import sample from '../assets/sampleposter.jpg';
 import axios from 'axios';
+import EventsService from "../services/EventsService";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const events = [ {
-    name: 'Feed the Hungry', datetime: 'Tomorrow', organizer: "Alpha Sig"
-  },
-];
+const Event = () => {
+  const [eventData, setEventData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-const Event = () =>{
-    const queryParameters = new URLSearchParams(window.location.search)
-    const name = queryParameters.get("name");
-    const org = queryParameters.get("org");
-    const date = queryParameters.get("date");
-    const location = queryParameters.get("location");
-    const description = queryParameters.get("description");
-    const price = queryParameters.get("price");
-    const venmo = queryParameters.get("venmo");
-    const benefits = queryParameters.get("benefits");
-    const charityweb = queryParameters.get("charityweb");
+  const id = new URLSearchParams(window.location.search).get("id");
 
-    return (
-      <div className="event">
-        <h1>Name: {name}</h1>
-        <p>Organizer: {org}</p>
-        <p>Date: {date}</p>
-        <p>Location: {location}</p>
+  useEffect(() => {
+    try {
+      EventsService.getEventById(id).then((response) => {
+        setEventData(response.data);
+        setLoading(false);
+      });
+    }
+    catch(err) {
+      setLoading(false);
+    }
+    
+  }, [id]);
 
-        {price != null &&
-          <p>Price: {price}</p>
-        }
-        
-        {venmo != null &&
-          <p>Venmo: {venmo}</p>
-        }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-        {benefits != null &&
-          <p>Benefits: {benefits}</p>
-        }
+  if (!eventData) {
+    return <div>No event found</div>;
+  }
 
-        {charityweb != null &&
-          <p>Charity Website: {charityweb}</p>
-        } 
+  const { eventName, organization, date, location, eventDescription, price, venmo, benefits, website } = eventData;
 
-        <p>Description: {description}</p>
+  return (
+    <div className="event">
+      <h1>Name: {eventName}</h1>
+      <p>Organizer: {organization}</p>
+      <p>Date: {date}</p>
+      <p>Location: {location}</p>
+      {price && <p>Price: {price}</p>}
+      {venmo && <p>Venmo: {venmo}</p>}
+      {benefits && <p>Benefits: {benefits}</p>}
+      {website && <p>Charity Website: {website}</p>}
+      <p>Description: {eventDescription}</p>
+    </div>
+  );
+};
 
-      </div>
-    )
-}
-
-export default Event
+export default Event;

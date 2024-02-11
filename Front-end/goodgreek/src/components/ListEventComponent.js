@@ -1,7 +1,8 @@
+/*
 import React from 'react'
 
 export default function ListEventComponent() => {
-  
+
     const [events, setEvents] = useState([])
 
     return (
@@ -29,5 +30,6 @@ export default function ListEventComponent() => {
                 </tbody>
             </table>
         </div>
-  )
+    )
 }
+*/
