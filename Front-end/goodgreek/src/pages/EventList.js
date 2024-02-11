@@ -3,6 +3,7 @@ import EventSumm from "../components/EventSumm";
 import '../css/eventlist.css';
 import EventsService from "../services/EventsService";
 import {Link} from "react-router-dom";
+import { redirect } from "react-router-dom";
 
 
 const EventList = () => {
@@ -14,8 +15,17 @@ const EventList = () => {
     });
   }, []);
 
+  const redirector = async () => {
+    if (!sessionStorage.isLoggedIn) {
+      return redirect("/login");
+    }
+    console.log(sessionStorage.isLoggedIn);
+    return null;
+  };
+
   return (
     <div className="event-list">
+      
       <title>Good Greek</title>
       <h1>Events</h1>
       {events.map((event, index) => (
