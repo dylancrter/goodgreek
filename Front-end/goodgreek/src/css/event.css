@@ -20,8 +20,9 @@
 .event-info {
     display: flex;
     flex-direction: column;
-    align-items: first baseline;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .event-image {
