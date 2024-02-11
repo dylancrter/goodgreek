@@ -4,6 +4,9 @@
     border: .1em solid grey;
     border-radius: 1em;
     color: white;
+    display: flex;
+    flex-direction: row;
+    
 }
 
 .event * {
@@ -12,4 +15,10 @@
 
 .whitetext {
     color: white !important;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+
 }
