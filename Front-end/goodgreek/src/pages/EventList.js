@@ -26,7 +26,7 @@ const EventList = () => {
       <title>GoodGreek</title>
       <h1>Philanthropic Events</h1>
       {events.map((event, index) => (
-        <Link to={"/id/" + event.id}>
+        <Link to={"/id/" + event.id} style={{ textDecoration: 'none' }}>
           <EventSumm key={index} name={event.eventName} datetime={event.date} location={event.location} organizer={event.organization}/>
         </Link>
       ))}
