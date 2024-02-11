@@ -44,4 +44,7 @@ public class Event {
 
     @Column(name = "website")
     private String website;
+
+    @Column(name = "image")
+    private int image;
 }
