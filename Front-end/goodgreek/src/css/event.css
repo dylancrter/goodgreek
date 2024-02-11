@@ -3,4 +3,13 @@
     height: 88vh;
     border: .1em solid grey;
     border-radius: 1em;
+    color: white;
+}
+
+.event * {
+    color: white;
+}
+
+.whitetext {
+    color: white !important;
 }

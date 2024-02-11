@@ -143,7 +143,7 @@ export const EventCreation = () => {
                                   placeholder="Benefits"
                                   name="benefits"
                                   className="form-control"
-                                  value={website}
+                                  value={benefits}
                                   onChange={e => setBenefits(e.target.value)}
                                   onClick={e => e.target.select()}
                               />

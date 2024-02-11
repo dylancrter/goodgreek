@@ -12,10 +12,6 @@ export default function TopBar() {
         <img src={Logo} className="logo"></img>
         <h1 className="goodgreek">GoodGreek</h1>
       </Navbar.Brand>
-      <div style={{justifyContent:'center', marginLeft:'65%'}}>
-      <label style={{marginRight:'0.5vw'}}>Search:</label>
-      <input type="text" onChange={e => setQuery(e.target.value)} />
-      </div>
       <div className="ml-auto">
         <Navbar.Toggle style={{color:"white", borderWidth:"0.25vw"}} aria-controls="responsive-navbar-nav" />
       </div>
