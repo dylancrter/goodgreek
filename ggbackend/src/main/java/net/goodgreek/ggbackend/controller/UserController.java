@@ -1,8 +1,8 @@
 package net.goodgreek.ggbackend.controller;
 
-import net.goodgreek.ggbackend.exception.ResourceNotFoundException;
 import net.goodgreek.ggbackend.model.User;
 import net.goodgreek.ggbackend.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,7 +50,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         // Check if a user with the same email already exists
-        User existingUser = userRepository.findByEmail(user.getEmail());
+        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
         if (existingUser != null) {
             return ResponseEntity.badRequest().body("A user with the same email already exists");
         }
@@ -63,12 +63,14 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> logIn(@RequestBody User user) {
         // Find the user by email
-        User existingUser = userRepository.findByEmail(user.getEmail());
-        if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
-            return ResponseEntity.ok("Login successful");
-        } else {
-            return ResponseEntity.badRequest().body("Invalid email or password");
-        }
+        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser.isPresent()) {
+            User newUser = existingUser.get();
+            if (newUser.getPassword().equals(user.getPassword())) {
+                return ResponseEntity.ok("User login successful");
+            }
+        } 
+        return ResponseEntity.badRequest().body("Invalid email or password");
     }
 
 }

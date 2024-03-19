@@ -5,10 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import net.goodgreek.ggbackend.controller.UserController;
-import net.goodgreek.ggbackend.model.User;
 import net.goodgreek.ggbackend.repository.EventRepository;
-import net.goodgreek.ggbackend.model.Event;
+import net.goodgreek.ggbackend.repository.UserRepository;
 
 @SpringBootApplication
 public class GgbackendApplication implements CommandLineRunner{
@@ -16,12 +14,14 @@ public class GgbackendApplication implements CommandLineRunner{
 	public static void main(String[] args) { SpringApplication.run(GgbackendApplication.class, args); }
 
 	@Autowired
-	private UserController userController;
+	private UserRepository userRepository;
 
 	@Autowired
 	private EventRepository eventRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
+		eventRepository.deleteAll();
+		userRepository.deleteAll();
 	}
 }

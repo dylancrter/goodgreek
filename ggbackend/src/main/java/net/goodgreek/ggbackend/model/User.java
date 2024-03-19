@@ -13,20 +13,30 @@ import lombok.Setter;
 @Entity
 @Table(name = "user")
 public class User {
-    
+
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Getter
+    @Setter
     @Column(name = "name")
     private String name;
 
+    @Getter
+    @Setter
     @Column(name = "email", unique = true)
     private String email;
 
+    @Getter
+    @Setter
     @Column(name = "password")
     private String password;
 
+    @Getter
+    @Setter
     @Column(name = "organization")
     private String organization;
 
