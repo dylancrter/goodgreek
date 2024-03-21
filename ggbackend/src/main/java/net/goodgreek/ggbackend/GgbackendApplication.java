@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import net.goodgreek.ggbackend.repository.EventRepository;
+import net.goodgreek.ggbackend.repository.TokenRepository;
 import net.goodgreek.ggbackend.repository.UserRepository;
 
 @SpringBootApplication
@@ -19,9 +20,12 @@ public class GgbackendApplication implements CommandLineRunner{
 	@Autowired
 	private EventRepository eventRepository;
 
+	@Autowired
+	private TokenRepository tokenRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
-		eventRepository.deleteAll();
+		tokenRepository.deleteAll();
 		userRepository.deleteAll();
 	}
 }

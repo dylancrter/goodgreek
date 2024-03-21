@@ -1,76 +1,116 @@
 package net.goodgreek.ggbackend.controller;
 
-import net.goodgreek.ggbackend.model.User;
-import net.goodgreek.ggbackend.repository.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import net.goodgreek.ggbackend.exception.ResourceNotFoundException;
+import net.goodgreek.ggbackend.model.User;
+import net.goodgreek.ggbackend.repository.UserRepository;
+import net.goodgreek.ggbackend.service.TokenService;
+import net.goodgreek.ggbackend.service.UserService;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin(origins = "https://localhost:3000")
 public class UserController {
     
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private TokenService tokenService;
+
+    // add user mapping
+    @PostMapping
+    public User createUser(@RequestBody User user) {
+        User user1 = userRepository.save(user);
+        return user1;
+    }
+
+    // mapping for getting all users
     @GetMapping
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    //Mapping for getting by id
+    // mapping for getting by id
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable Long id) {
-        Optional<User> userOptional = userRepository.findById(id);
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.notFound().build(); // Return 404 Not Found response
-        }
-}
+    public ResponseEntity<User> getUserbyId(@PathVariable Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+        return ResponseEntity.ok(user);
+    }
 
+    // mapping for deleting all users
     @DeleteMapping("/all")
     public void deleteAllUsers() {
         userRepository.deleteAll();
         return;
     }
 
-    // Mapping for creating a new user
-    @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) {
-        // Check if a user with the same email already exists
-        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
-        if (existingUser != null) {
-            return ResponseEntity.badRequest().body("A user with the same email already exists");
-        }
-
-        // If no duplicate user is found, save the new user
-        User savedUser = userRepository.save(user);
-        return ResponseEntity.ok(savedUser);
+    @PostMapping("/editProfileAccess")
+    public ResponseEntity<Boolean> editProfileAccess(@RequestBody Map<String, String> request) {
+        return ResponseEntity.ok(userService.updateProfileAbility(request.get("email"), request.get("password")));
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> logIn(@RequestBody User user) {
-        // Find the user by email
-        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
-        if (existingUser.isPresent()) {
-            User newUser = existingUser.get();
-            if (newUser.getPassword().equals(user.getPassword())) {
-                return ResponseEntity.ok("User login successful");
-            }
-        } 
-        return ResponseEntity.badRequest().body("Invalid email or password");
+    /*
+    @PutMapping("/editProfile")
+    public void editProfile(@RequestBody Map<String, String> request) {
+        userService.updatePassword(request.get("email"), request.get("password"));
+        userService.changeUserInfo(request.get("email"), request.get("password"), request.get("firstName"), request.get("lastName"), 
+                                    request.get("billingStreet"), request.get("billingCity"), request.get("billingState"), request.get("billingZipCode"));
+        userService.updatePaymentInfo(request.get("email"), request.get("cardNumber"), request.get("cardType"), request.get("cardExpirationDate"));
+    }
+    */
+
+    @PutMapping("/forgotPassword")
+    public ResponseEntity<String> forgotPasword(@RequestBody Map<String, String> request) {
+        return ResponseEntity.ok(userService.forgotPassword(request.get("email")));
+    }
+
+    /* 
+    @PostMapping ("/getUser")
+    public ResponseEntity<User> getUserByToken(@RequestBody Map<String, String> requestBody) {
+        String token = requestBody.get("token");
+
+        boolean isTokenActive = tokenService.isTokenActive(token);
+        if (!isTokenActive) {
+            System.out.println("Token is invalid or has been logged out.");
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        User user = tokenService.getUserDataFromToken(token);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    */
+
+    @PostMapping ("/getUser")
+    public ResponseEntity<User> getUserByToken(@RequestBody Map<String, String> requestBody) {
+        String token = requestBody.get("token");
+
+        boolean isTokenActive = tokenService.isTokenActive(token);
+        if (!isTokenActive) {
+            System.out.println("Token is invalid or has been logged out.");
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        User user = tokenService.getUserDataFromToken(token);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
